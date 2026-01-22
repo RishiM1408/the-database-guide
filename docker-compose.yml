@@ -1,0 +1,83 @@
+version: "3.8"
+
+services:
+  # 1. Relational (PostgreSQL)
+  postgres:
+    image: postgres:16-alpine
+    container_name: guide-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports: ["5432:5432"]
+    volumes: [pg_data:/var/lib/postgresql/data]
+
+  # 2. Relational (MySQL)
+  mysql:
+    image: mysql:8.0
+    container_name: guide-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports: ["3306:3306"]
+    volumes: [mysql_data:/var/lib/mysql]
+
+  # 3. Key-Value (Redis)
+  redis:
+    image: redis:alpine
+    container_name: guide-redis
+    ports: ["6379:6379"]
+
+  # 4. Wide-Column (ScyllaDB)
+  scylla:
+    image: scylladb/scylla
+    container_name: guide-scylla
+    ports: ["9042:9042"]
+    command: --smp 1 --memory 750M
+
+  # 5. Document (MongoDB)
+  mongo:
+    image: mongo:latest
+    container_name: guide-mongo
+    ports: ["27017:27017"]
+    volumes: [mongo_data:/data/db]
+
+  # 6. Vector (Qdrant)
+  qdrant:
+    image: qdrant/qdrant
+    container_name: guide-qdrant
+    ports: ["6333:6333"]
+
+  # 7. Graph (Neo4j)
+  neo4j:
+    image: neo4j:5
+    container_name: guide-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password
+    ports:
+      - "7474:7474" # HTTP
+      - "7687:7687" # Bolt
+
+  # 8. Search (Elasticsearch)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: guide-elastic
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports: ["9200:9200"]
+
+  # 9. Time-Series (InfluxDB)
+  influxdb:
+    image: influxdb:2
+    container_name: guide-influx
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: password123
+      DOCKER_INFLUXDB_INIT_ORG: myorg
+      DOCKER_INFLUXDB_INIT_BUCKET: mybucket
+    ports: ["8086:8086"]
+
+volumes:
+  pg_data:
+  mysql_data:
+  mongo_data:
