@@ -18,7 +18,9 @@ This section breaks down the internal architecture, scaling capability, and Java
 
 ### 3. [Wide-Column Stores](./nosql-wide-column.md)
 
-- **Systems**: Cassandra, ScyllaDB.
+### 3. [Wide-Column Stores](./nosql-wide-column.md)
+
+- **Systems**: **[ScyllaDB](./nosql-wide-column.md)** (C++), **[Cassandra](./cassandra.md)** (Java).
 - **Best For**: High-velocity writes, Time-series data, Append-only logs.
 
 ### 4. [Document Stores](./nosql-document.md)

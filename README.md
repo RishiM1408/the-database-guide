@@ -45,6 +45,7 @@ graph TD
     click DSQL "./db-profiles/distributed-sql.md"
     click Redis "./db-profiles/nosql-key-value.md"
     click Scylla "./db-profiles/nosql-wide-column.md"
+    click Cass "./db-profiles/cassandra.md"
     click Neo "./db-profiles/graph.md"
     click Qdrant "./db-profiles/vector.md"
     click Influx "./db-profiles/time-series.md"
@@ -60,12 +61,13 @@ We go deep into how these engines work (B-Trees, LSM-Trees, HNSW, Inverted Index
 2.  **[Distributed SQL](./db-profiles/distributed-sql.md)**: CockroachDB, Vitess.
 3.  **[Postgres Deep Dive](./db-profiles/postgres-everything.md)**: JSONB, PostGIS, pgvector.
 4.  **[Key-Value](./db-profiles/nosql-key-value.md)**: Redis.
-5.  **[Wide-Column](./db-profiles/nosql-wide-column.md)**: Cassandra, ScyllaDB.
-6.  **[Document](./db-profiles/nosql-document.md)**: MongoDB.
-7.  **[Vector (AI)](./db-profiles/vector.md)**: Qdrant, Pinecone.
-8.  **[Graph](./db-profiles/graph.md)**: Neo4j.
-9.  **[Search](./db-profiles/search.md)**: Elasticsearch.
-10. **[Time-Series](./db-profiles/time-series.md)**: InfluxDB.
+5.  **[Wide-Column](./db-profiles/nosql-wide-column.md)**: ScyllaDB (C++).
+6.  **[Cassandra](./db-profiles/cassandra.md)**: The JVM Original.
+7.  **[Document](./db-profiles/nosql-document.md)**: MongoDB.
+8.  **[Vector (AI)](./db-profiles/vector.md)**: Qdrant, Pinecone.
+9.  **[Graph](./db-profiles/graph.md)**: Neo4j.
+10. **[Search](./db-profiles/search.md)**: Elasticsearch.
+11. **[Time-Series](./db-profiles/time-series.md)**: InfluxDB.
 
 ## 🏆 Architectural Case Studies (The "Why")
 

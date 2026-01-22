@@ -1,6 +1,6 @@
-# Wide-Column Stores (Cassandra / ScyllaDB)
+# ScyllaDB (The C++ Evolution)
 
-> **The Heavy Lifters**: Optimized for massive write throughput and time-series data.
+> **The Speed Demon**: Cassandra compatible, but 10x faster.
 
 ## ⚙️ Storage Engine Logic
 
