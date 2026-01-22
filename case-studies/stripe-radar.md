@@ -35,7 +35,7 @@ graph TD
     Fraudster[Fraudster] -->|Uses| C1[Card 1]
     Fraudster -->|Uses| C2[Card 2]
 
-    C1 -->|Transaction| IP[IP Address 192.168.x.x]
+    C1 -->|Transaction| IP["IP Address 192.168.x.x"]
     C2 -->|Transaction| IP
 
     C1 -.->|Chargeback!| Bank
