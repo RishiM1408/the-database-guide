@@ -51,16 +51,16 @@ Stripe uses **WCC (Weakly Connected Components)** and **Louvain Modularity** to 
 
 ```mermaid
 graph TD
-    Fraudster[Fraudster] -- "Uses" --> C1[Card 1]
-    Fraudster -- "Uses" --> C2[Card 2]
+    Fraudster[Fraudster] -->|Uses| C1[Card 1]
+    Fraudster -->|Uses| C2[Card 2]
 
-    C1 -- "Transaction" --> IP["IP Address 192.168.x.x"]
-    C2 -- "Transaction" --> IP
+    C1 -->|Transaction| IP["IP Address 192.168.x.x"]
+    C2 -->|Transaction| IP
 
     C1 -.->|Chargeback!| Bank
 
-    NewTx[New Transaction] -- "Uses" --> C3[Card 3]
-    C3 -- "Uses" --> IP
+    NewTx[New Transaction] -->|Uses| C3[Card 3]
+    C3 -->|Uses| IP
 
     style IP fill:#f9f,stroke:#333
     style C1 fill:#f00,stroke:#333

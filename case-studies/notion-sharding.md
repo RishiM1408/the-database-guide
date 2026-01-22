@@ -43,13 +43,13 @@ To kill the "Vacuum Death Spiral", they changed how they deleted data.
 
 ## 📉 Visualizing the Split
 
-```mermaid
 graph TD
-    App["Application Server"] -- "Hash(WorkspaceID)" --> R[Router]
-    R -- "Shard 1-15" --> DB1[Physical DB Host 1]
-    R -- "Shard 16-30" --> DB2[Physical DB Host 2]
-    R -- "..." --> DB3[...]
-    R -- "Shard 465-480" --> DB32[Physical DB Host 32]
+App["Application Server"] -->|"Hash(WorkspaceID)"| R[Router]
+R -->|Shard 1-15| DB1[Physical DB Host 1]
+R -->|Shard 16-30| DB2[Physical DB Host 2]
+R -->|...| DB3[...]
+R -->|Shard 465-480| DB32[Physical DB Host 32]
+
 ```
 
 ## 💡 Key Takeaway for Architects
@@ -57,3 +57,4 @@ graph TD
 > **"You don't always need NewSQL."**
 >
 > Notion proved you can scale boring old PostgreSQL to massive heights if you are willing to build the sharding logic yourself. By sticking with Postgres, they kept their powerful rich-text query capabilities that NoSQL stores couldn't match.
+```

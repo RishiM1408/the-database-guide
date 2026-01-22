@@ -27,10 +27,10 @@ Robinhood originally used InfluxDB but hit high-cardinality limits. They built *
 
 ```mermaid
 graph LR
-    Ex[Exchange Feed] -- "Ticks" --> Kafka
-    Kafka -- "Consumer" --> Nursery[Nursery (Custom TSDB)]
-    Nursery -- "Hot Data" --> NVMe[NVMe RAM Disk]
-    Nursery -- "Cold Data" --> S3[AWS S3 (Parquet)]
+    Ex["Exchange Feed"] -->|Ticks| Kafka
+    Kafka -->|Consumer| Nursery["Nursery (Custom TSDB)"]
+    Nursery -->|Hot Data| NVMe["NVMe RAM Disk"]
+    Nursery -->|Cold Data| S3["AWS S3 (Parquet)"]
 ```
 
 ### 2. The "Stock Split" Problem
