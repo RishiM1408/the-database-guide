@@ -59,9 +59,9 @@ Slack adopted **Vitess**, a database clustering system for horizontal scaling of
 graph TD
     App["Application Tier (PHP/Hack)"] -- "SQL Protocol" --> VT["VtGate (Vitess Proxy)"]
 
-    VT -->|Routes Query| S1[Shard 1 (MySQL)]
-    VT -->|Routes Query| S2[Shard 2 (MySQL)]
-    VT -->|Routes Query| S3[Shard 3 (MySQL)]
+    VT -- "Routes Query" --> S1[Shard 1 (MySQL)]
+    VT -- "Routes Query" --> S2[Shard 2 (MySQL)]
+    VT -- "Routes Query" --> S3[Shard 3 (MySQL)]
 
     subgraph Vitess Cluster
     VT

@@ -46,10 +46,10 @@ To kill the "Vacuum Death Spiral", they changed how they deleted data.
 ```mermaid
 graph TD
     App["Application Server"] -- "Hash(WorkspaceID)" --> R[Router]
-    R -->|Shard 1-15| DB1[Physical DB Host 1]
-    R -->|Shard 16-30| DB2[Physical DB Host 2]
-    R -->|...| DB3[...]
-    R -->|Shard 465-480| DB32[Physical DB Host 32]
+    R -- "Shard 1-15" --> DB1[Physical DB Host 1]
+    R -- "Shard 16-30" --> DB2[Physical DB Host 2]
+    R -- "..." --> DB3[...]
+    R -- "Shard 465-480" --> DB32[Physical DB Host 32]
 ```
 
 ## 💡 Key Takeaway for Architects

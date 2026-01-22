@@ -37,9 +37,9 @@ Elasticsearch calculates **TF-IDF** (Term Frequency - Inverse Document Frequency
 
 ```mermaid
 graph LR
-    User[User] -->|Search Query| LB[Load Balancer]
-    LB -->|Reads| ES[Elasticsearch Cluster]
-    LB -->|Writes| SQL["MariaDB (Source of Truth)"]
+    User[User] -- "Search Query" --> LB[Load Balancer]
+    LB -- "Reads" --> ES[Elasticsearch Cluster]
+    LB -- "Writes" --> SQL["MariaDB (Source of Truth)"]
 
     SQL -.->|Change Data Capture| ES
 ```

@@ -19,6 +19,28 @@ Time-Series DBs (TSDBs) are optimized for:
 2.  **Compression**: Storing `100.00, 100.01` as `+0.01` (Delta Compression).
 3.  **Downsampling**: Converting "1 million raw ticks" into "1,000 hourly candles" in the background (Rollups).
 
+## 🏗️ The Move to "Nursery" (Custom Store)
+
+Robinhood originally used InfluxDB but hit high-cardinality limits. They built **Nursery**.
+
+### 1. The Pipeline
+
+```mermaid
+graph LR
+    Ex[Exchange Feed] -- "Ticks" --> Kafka
+    Kafka -- "Consumer" --> Nursery[Nursery (Custom TSDB)]
+    Nursery -- "Hot Data" --> NVMe[NVMe RAM Disk]
+    Nursery -- "Cold Data" --> S3[AWS S3 (Parquet)]
+```
+
+### 2. The "Stock Split" Problem
+
+**Challenge**: Apple splits 4:1.
+
+- **Immutable DB**: You cannot just "update" 10 years of history.
+- **Solution**: They implemented a "Split Adjustment Factor" column. They don't rewrite history; they apply a math multiplier at query time.
+  - `Raw Price: $400` \* `Factor: 0.25` = `Displayed: $100`.
+
 ### Storage Tiering (Hot/Warm/Cold)
 
 To manage cost, they move data across storage mediums based on age.

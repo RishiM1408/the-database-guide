@@ -51,11 +51,11 @@ DoorDash migrated to **CockroachDB**, a cloud-native Distributed SQL database th
 
 ```mermaid
 graph TD
-    App["Application Tier"] -->|Writes| W["Primary Writer (CPU 99%)"]
-    App -->|Reads| R1["Replica 1"]
-    App -->|Reads| R2["Replica 2"]
-    W -->|Replication Lag| R1
-    W -->|Replication Lag| R2
+    App["Application Tier"] -- "Writes" --> W["Primary Writer (CPU 99%)"]
+    App -- "Reads" --> R1["Replica 1"]
+    App -- "Reads" --> R2["Replica 2"]
+    W -- "Replication Lag" --> R1
+    W -- "Replication Lag" --> R2
 ```
 
 ### After (CockroachDB)
