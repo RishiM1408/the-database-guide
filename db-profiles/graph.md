@@ -18,8 +18,17 @@ In a Graph DB (like Neo4j), a Node physically contains the **memory address** of
 | **Amazon Neptune** | RDF / Property Graph   | AWS Managed ecosystems.                       |
 | **TigerGraph**     | Native Parallel Graph  | Massive analytics/Analytics on Graphs.        |
 
-## 🏗️ internal Structures
+## 🏗️ Deep Internals
 
+### Indexing Strategy (Pointer Chasing)
+
+- **Index-Free**: The "Index" is the relationship itself.
+- **B-Trees**: Still used for finding the _starting node_ (e.g., specific User ID).
+
+### Caching Strategy (Page Cache)
+
+- **Page Cache**: The graph files (Node Store, Relationship Store) are mapped to memory.
+- **Warmup**: Traversals are fast only if the "neighborhood" of nodes is in RAM. Cold graph traversals = Random Disk IO = Slow.
 - **Node Store**: Fixed-size records (e.g., 15 bytes). ID, pointer to first relationship, pointer to first property.
 - **Relationship Store**: Fixed-size records. ID, Start Node, End Node, Type, pointer to next relationship.
 - **Doubly Linked Lists**: Relationships form a linked list for each node.

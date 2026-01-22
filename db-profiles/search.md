@@ -21,11 +21,19 @@ Standard databases index _rows_. Search engines index _words_.
 | **Meilisearch**   | Rust      | **Speed**. Typo-tolerance, e-commerce, simpler API. |
 | **OpenSearch**    | AWS Fork  | AWS-native version of Elastic.                      |
 
-## 🏗️ Internals
+## 🏗️ Deep Internals
+
+### Indexing Strategy (Inverted Index)
 
 - **Segments**: Data is written to immutable segments (Lucene index files).
-- **Refresh Interval**: Unlike a DB, data isn't visible immediately. Standard is 1 second (Near Real-Time).
+- **Merge**: Background process merges small segments into larger ones (Compaction).
 - **FST (Finite State Transducers)**: Used to compress the term dictionary in memory.
+
+### Caching Strategy
+
+- **OS Page Cache**: Lucene is designed to rely on the Linux Page Cache for segment files.
+- **Request Cache**: Caches the results of search queries (e.g., aggregations).
+- **Query Cache**: Caches the bitsets of filters (e.g., `status:published`).
 
 ## ☕ Java Integration
 

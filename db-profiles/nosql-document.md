@@ -8,6 +8,20 @@
 - **Index**: Uses standard **B-Trees**, just like Relational DBs!
 - **Sharding**: Automatic sharding via "Chunks". When a chunk grows too large (e.g., 64MB), it splits.
 
+## 🏗️ Deep Internals
+
+### Indexing Strategy (B-Tree + Geo)
+
+- **Standard**: B-Tree for scalar fields.
+- **Multikey**: For arrays (creates index entry for _each_ element).
+- **2dsphere**: For geospatial queries.
+
+### Caching Strategy (WiredTiger)
+
+- **WiredTiger Cache**: The engine has its own internal cache (usually 50% of RAM - 1GB).
+- **Compression**: Data in cache is uncompressed (usually), data on disk is compressed (Snappy/Zstd).
+- **Journaling**: Write-ahead-log for durability.
+
 ## 🚀 Options
 
 | Database      | Type  | Best For                                     |

@@ -16,9 +16,21 @@ TSDBs exploit the fact that **time always moves forward**.
 
 ### 2. TimescaleDB (Hypertables)
 
-- It's just PostgreSQL!
 - **Hypertable**: An abstraction that automatically partitions data by time (e.g., 1 chunk per day).
 - **Benefit**: You get SQL, JOINS, and ACID, but with TSDB performance.
+
+## 🏗️ Deep Internals
+
+### Indexing Strategy (TSM / B-Tree)
+
+- **InfluxDB**: Uses **TSM Tree** (Time Structured Merge). Optimized for sorted time append.
+- **TimescaleDB**: Uses B-Trees on the time column for partition pruning.
+
+### Caching Strategy
+
+- **WAL (Write Ahead Log)**: All writes hit the WAL first for durability.
+- **Memory Index**: InfluxDB buffers recent writes in RAM (like an LSM MemTable) before flushing to TSM files.
+- **Compaction**: Background jobs merge many small files into fewer, larger, highly compressed files.
 
 ## 🚀 Options
 

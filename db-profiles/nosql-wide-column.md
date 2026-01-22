@@ -11,6 +11,20 @@
   3.  Background **Compaction** merges SSTables to remove deleted/superseded data.
 - **Performance**: Writes are $O(1)$ (append-only). Reads can be slower than B-Trees if data is fragmented across many SSTables (Bloom Filters help).
 
+## 🏗️ Deep Internals
+
+### Indexing Strategy (LSM-Tree)
+
+- **MemTable**: The in-memory buffer where writes happen first (Sorted Map).
+- **SSTable**: The immutable file on disk.
+- **Bloom Filters**: Identifying if a key is _possibly_ in an SSTable or _definitely not_. Saves disk seeks.
+
+### Caching Strategy
+
+- **Key Cache**: Caches the location of keys in SSTables.
+- **Row Cache**: Caches the entire hot row in memory (Expensive but fast).
+- **OS Page Cache**: Cassandra relies heavily on Linux caching the SSTable files in RAM.
+
 ## 🚀 Scaling Path
 
 1.  **Peer-to-Peer (Leaderless)**: Every node is equal.
@@ -23,6 +37,7 @@
 - **Pattern**: **CQRS** (Command Query Responsibility Segregation).
   - _Why?_ Cassandra tables are optimized for _specific queries_. You cannot join.
   - _Logic_: You often need one table for writing `messages_by_id` and another table for reading `messages_by_user`. The App must write to both (Command) or use a materialized view.
+
   ```java
   // CQRS: Write path handles multiple tables/views
   public void postMessage(Message cmd) {

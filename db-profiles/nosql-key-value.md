@@ -8,6 +8,22 @@
 - **Mechanism**: All data resides in **RAM**. Persistence is handled via Snapshots (RDB) or Append-Only Files (AOF) on disk asynchronously.
 - **Performance**: Sub-millisecond reads/writes ($O(1)$).
 
+## 🏗️ Deep Internals
+
+### Indexing Strategy (Hash Table)
+
+- **Primary Structure**: Global Hash Table.
+- **SipHash**: Redis uses SipHash to map keys to slots.
+- **Rehashing**: When the table gets full, Redis expands it. This happens incrementally (Progressive Rehash) to avoid freezing the server.
+
+### Caching Strategy
+
+- **It IS the Cache**: Redis typically _is_ the caching layer for other DBs.
+- **Eviction Policies**:
+  - `volatile-lru`: Evict least recently used keys (if they have an expiry set).
+  - `allkeys-lru`: Evict any key.
+  - `noeviction`: Return error when full.
+
 ## 🚀 Scaling Path
 
 1.  **Replication**: Primary-Replica for High Availability.

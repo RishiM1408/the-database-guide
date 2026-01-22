@@ -8,6 +8,8 @@ This section breaks down the internal architecture, scaling capability, and Java
 
 - **Systems**: PostgreSQL, MySQL, CockroachDB.
 - **Best For**: Financials, Identity, Complex relationships.
+- **[Deep Dive: Postgres (The Everything Database)](./postgres-everything.md)**
+- **[Deep Dive: Distributed SQL](./distributed-sql.md)** (CockroachDB, Vitess)
 
 ### 2. [Key-Value Stores](./nosql-key-value.md)
 

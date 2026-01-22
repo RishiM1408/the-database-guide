@@ -42,6 +42,7 @@ graph TD
     Doc -->|Gen Purpose| Mongo[MongoDB]
 
     click RDBMS "./db-profiles/relational.md"
+    click DSQL "./db-profiles/distributed-sql.md"
     click Redis "./db-profiles/nosql-key-value.md"
     click Scylla "./db-profiles/nosql-wide-column.md"
     click Neo "./db-profiles/graph.md"
@@ -55,14 +56,16 @@ graph TD
 
 We go deep into how these engines work (B-Trees, LSM-Trees, HNSW, Inverted Indexes).
 
-1.  **[Relational (SQL)](./db-profiles/relational.md)**: Postgres, MySQL, CockroachDB.
-2.  **[Key-Value](./db-profiles/nosql-key-value.md)**: Redis.
-3.  **[Wide-Column](./db-profiles/nosql-wide-column.md)**: Cassandra, ScyllaDB.
-4.  **[Document](./db-profiles/nosql-document.md)**: MongoDB.
-5.  **[Vector (AI)](./db-profiles/vector.md)**: Qdrant, Pinecone.
-6.  **[Graph](./db-profiles/graph.md)**: Neo4j.
-7.  **[Search](./db-profiles/search.md)**: Elasticsearch.
-8.  **[Time-Series](./db-profiles/time-series.md)**: InfluxDB.
+1.  **[Relational (SQL)](./db-profiles/relational.md)**: Postgres, MySQL.
+2.  **[Distributed SQL](./db-profiles/distributed-sql.md)**: CockroachDB, Vitess.
+3.  **[Postgres Deep Dive](./db-profiles/postgres-everything.md)**: JSONB, PostGIS, pgvector.
+4.  **[Key-Value](./db-profiles/nosql-key-value.md)**: Redis.
+5.  **[Wide-Column](./db-profiles/nosql-wide-column.md)**: Cassandra, ScyllaDB.
+6.  **[Document](./db-profiles/nosql-document.md)**: MongoDB.
+7.  **[Vector (AI)](./db-profiles/vector.md)**: Qdrant, Pinecone.
+8.  **[Graph](./db-profiles/graph.md)**: Neo4j.
+9.  **[Search](./db-profiles/search.md)**: Elasticsearch.
+10. **[Time-Series](./db-profiles/time-series.md)**: InfluxDB.
 
 ## 🏆 Architectural Case Studies (The "Why")
 
