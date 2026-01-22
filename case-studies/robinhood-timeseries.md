@@ -19,6 +19,14 @@ Time-Series DBs (TSDBs) are optimized for:
 2.  **Compression**: Storing `100.00, 100.01` as `+0.01` (Delta Compression).
 3.  **Downsampling**: Converting "1 million raw ticks" into "1,000 hourly candles" in the background (Rollups).
 
+### Storage Tiering (Hot/Warm/Cold)
+
+To manage cost, they move data across storage mediums based on age.
+
+- **Hot (RAM/NVMe)**: First 24 hours. Instant query for "Today's Chart".
+- **Warm (SSD)**: 7 Days. Fast query for "1 Week View".
+- **Cold (S3/Object Store)**: History. Slower query for "All Time". TSDBs manage this movement automatically.
+
 ### Why not Postgres?
 
 - **PostgreSQL**: `SELECT AVG(price) FROM ticks WHERE symbol='AAPL'` scans millions of rows. Slow.

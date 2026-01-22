@@ -46,7 +46,29 @@ Instead of relying on the DB to shard, logic was moved to a routing layer.
 - **Trip Data**: Sharded by `TripUUID`.
 - **User Data**: Sharded by `UserUUID`.
 
-#### 2. Append-Only Data Model (The "Schemaless" part)
+#### 3. The Data Structure (The "Cell")
+
+Schemaless is basically a giant Key-Value store on top of MySQL.
+
+- **Row Key**: `UUID` + `Timestamp`
+- **Value**: JSON Blob
+
+```json
+{
+  "cell_id": "uuid_v4",
+  "shard_id": 42,
+  "timestamp": 1410123456,
+  "body": {
+    "status": "COMPLETED",
+    "driver_id": "driver_88",
+    "fare": 25.5,
+    "lat": 37.7749,
+    "lng": -122.4194
+  }
+}
+```
+
+#### 4. Append-Only Data Model (The "Schemaless" part)
 
 They treated data like an immutable ledger.
 
