@@ -1,3 +1,8 @@
+<div align="center">
+  <h3>Project Views</h3>
+  <img src="https://komarev.com/ghpvc/?username=RishiM1408-db-selection-guide&label=Project%20Views&color=0e75b6&style=flat" alt="Project Views" />
+</div>
+
 # The Database Decision Matrix: Architecture, Java Patterns, and Case Studies
 
 > **The Architect’s Handbook for Database Selection**: A comprehensive guide mapping system design scenarios to optimal data stores, cost-effective hosting, and production-grade Java implementation patterns.
